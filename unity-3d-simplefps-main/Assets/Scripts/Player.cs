@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
         rifle.transform.localRotation = Quaternion.identity;
         rifle.transform.localPosition = Vector3.zero;
         gotWeapon = true;
-        TakeAmmo(20);
+        TakeAmmo(200);
     }
 
     /// <summary>
