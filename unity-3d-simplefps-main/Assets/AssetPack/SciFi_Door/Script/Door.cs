@@ -18,7 +18,7 @@ public class Door : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (other.GetComponent<Player>().hasKey)               
+            //if (other.GetComponent<Player>().hasKey)               
                 ToggleDoor(true);
         }
     }
@@ -27,7 +27,7 @@ public class Door : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (other.GetComponent<Player>().hasKey)
+            //if (other.GetComponent<Player>().hasKey)
                 ToggleDoor(false);
         }
     }

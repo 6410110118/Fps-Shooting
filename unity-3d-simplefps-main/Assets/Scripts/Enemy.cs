@@ -26,6 +26,8 @@ public class Enemy : MonoBehaviour
     public int chaseZ2;
     public int chaseX1;
     public int chaseX2;
+    public int damage = 10;
+    public int Time = 0;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour
             agent.SetDestination(targetPlayer.position);
         }else{
             animator.SetBool("Moving", false);
+            animator.SetBool("Attack", false);
         }
     }   
     private void TakeDamage()
@@ -57,5 +60,26 @@ public class Enemy : MonoBehaviour
     IEnumerator clearObject(){
         yield return new WaitForSeconds(2f);
         Destroy(this.gameObject);
+    }
+     private void OnCollisionEnter(Collision other)
+    {
+        if (other.collider.tag == "Player")
+        {
+            animator.SetBool("Attack", true);
+            other.collider.SendMessage("TakeDamage", damage);
+        }
+    }
+    private void OnCollisionStay(Collision other) 
+    {
+        if (other.collider.tag == "Player")
+        {
+            Time += 1;
+            animator.SetBool("Attack", true);
+            if(Time >= 1000)
+            {
+                other.collider.SendMessage("TakeDamage", damage);
+                Time = 0;
+            }
+        }
     }
 }
