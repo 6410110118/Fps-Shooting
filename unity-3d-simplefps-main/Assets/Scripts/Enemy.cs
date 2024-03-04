@@ -39,8 +39,10 @@ public class Enemy : MonoBehaviour
     {
         if(targetPlayer.position.x <= chaseX1 && targetPlayer.position.x >= chaseX2 && targetPlayer.position.z <= chaseZ1 && targetPlayer.position.z >= chaseZ2){
             animator.SetBool("Moving", true);
+            agent.isStopped = false;
             agent.SetDestination(targetPlayer.position);
         }else{
+            agent.isStopped = true;
             animator.SetBool("Moving", false);
             animator.SetBool("Attack", false);
         }

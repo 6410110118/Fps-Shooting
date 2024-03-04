@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class Player : MonoBehaviour
 {
     // Object Static Variables
     private static int _maxHealth = 100;
-    private static int _maxAmmo = 250;
+    private static int _maxAmmo = 9999;
     public static int maxHealth
     {
         get { return _maxHealth; }
@@ -72,7 +73,7 @@ public class Player : MonoBehaviour
     [Range(5, 50)]
     public int healAmount = 25;
     [Range(20, 100)]
-    public int ammoAmount = 40;
+    public int ammoAmount = 9999;
     public AudioClip walkSound;
     public AudioClip shootSound;
     public AudioClip dryFireSound;
@@ -80,6 +81,12 @@ public class Player : MonoBehaviour
     public AudioClip pickAmmoSound;
     public AudioClip pickHealthSound;
     public AudioClip pickSound;
+    public Image Mission1img;
+    public Image Mission2img;
+    public Image Mission3img;
+    public Image Mission4img;
+    public Image Mission5img;
+    [SerializeField] Transform SomePlayer;
     
     // MonoBehaviour Functions
     private void Awake()
@@ -93,6 +100,19 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if(SomePlayer.position.x >= 388 && SomePlayer.position.x <= 393 && SomePlayer.position.z >= 221 && SomePlayer.position.z <= 223){
+            Mission1img.gameObject.SetActive(false);
+            Mission2img.gameObject.SetActive(true);
+        }else if(SomePlayer.position.x <= 360 && SomePlayer.position.x >=350 && SomePlayer.position.z <= 413 && SomePlayer.position.z >= 410 && gotKey == false){
+            Mission2img.gameObject.SetActive(false);
+            Mission3img.gameObject.SetActive(true);
+        }else if(gotKey == true){
+            Mission3img.gameObject.SetActive(false);
+            Mission4img.gameObject.SetActive(true);
+        }if(SomePlayer.position.x <= 353 && SomePlayer.position.z >= 416){
+            Mission4img.gameObject.SetActive(false);
+            Mission5img.gameObject.SetActive(true);
+        }
         Shoot();
         Rotate();
         Move();
@@ -173,7 +193,7 @@ public class Player : MonoBehaviour
                 // Displaying Shoot Feedback
                 source.pitch = Random.Range(0.8f, 1.2f);
                 source.PlayOneShot(shootSound);
-                curAmmo--;
+                //curAmmo--;
                 AmmoUpdate(curAmmo);
                 camRotation.x -= 2;
                 GameObject gunFlare = Instantiate(feedbackPrefab, bulletOrigin.position, Quaternion.identity) as GameObject;
@@ -271,7 +291,7 @@ public class Player : MonoBehaviour
         rifle.transform.localRotation = Quaternion.identity;
         rifle.transform.localPosition = Vector3.zero;
         gotWeapon = true;
-        TakeAmmo(200);
+        TakeAmmo(9999);
     }
 
     /// <summary>
