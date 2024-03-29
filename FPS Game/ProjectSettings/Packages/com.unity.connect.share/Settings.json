@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/MSIPea/Documents/GitHub/Fps-Shooting/unity-3d-simplefps-main/WebGL Builds;D:/240-332/Fps-Shooting/Build;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/MSIPea/Documents/GitHub/Fps-Shooting/FPS Game/WebGL Builds;C:/Users/MSIPea/Documents/GitHub/Fps-Shooting/unity-3d-simplefps-main/WebGL Builds;D:/240-332/Fps-Shooting/Build;;;;;;;\"}"
             }
         ]
     }

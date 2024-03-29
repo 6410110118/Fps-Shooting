@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -308,7 +309,7 @@ public class Player : MonoBehaviour
     }
     private void EndGame()
     {
-        EndImg.gameObject.SetActive(true);
+        SceneManager.LoadScene(2);
     }
 
     /// <summary>
